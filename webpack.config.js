@@ -2,7 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 //var UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 //var ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const MinifyPlugin = require("babel-minify-webpack-plugin");
+const MinifyPlugin = require("babel-minify-webpack-plugin");
 
 const ROOT = path.resolve(__dirname, 'src/main');
 const SRC = path.resolve(ROOT, 'fuentes');
@@ -12,7 +12,7 @@ module.exports = {
   //entry: ['./src/main.js', './src/app.css'],
   entry: SRC + '/main.js',
   output: {
-    path: path.join(PUBLIC, 'dist/'),
+    path: path.join(ROOT, 'dist/'),
     publicPath: '/pvz2/dist/',
     filename: 'build.js'
   },
@@ -25,11 +25,11 @@ module.exports = {
           // other vue-loader options go here
         }
       },
-      {
+/*      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },
+      },*/
       {
         test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
         loader: 'file-loader',
@@ -74,6 +74,7 @@ module.exports = {
   performance: {
     hints: false
   },
+   mode: 'production'
   //devtool: '$symbol_poundeval-source-map'
 }
 
